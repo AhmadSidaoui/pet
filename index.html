@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <title>G</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <!-- Google fonts & icons -->
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;800&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.10/font/bootstrap-icons.css">
+  <!-- GSAP (animation) -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
+  <link rel="stylesheet" href="style.css">
+  <script src="https://d3js.org/d3.v7.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/chartjs-plugin-annotation@2.1.0"></script>
+
+</head>
+
+<body>
+  <!-- Password Protection Overlay -->
+  <div id="passwordOverlay" style="position: fixed; top: 0; left: 0; width: 100%; height: 100%; background: rgba(0,0,0,0.9); display: flex; justify-content: center; align-items: center; z-index: 9999; font-family: 'Inter', sans-serif;">
+    <div style="background: white; padding: 2rem; border-radius: 10px; text-align: center; box-shadow: 0 10px 30px rgba(0,0,0,0.3);">
+      <h3 style="margin-bottom: 1.5rem; color: #333; font-weight: 600;">Enter Password to Access Content</h3>
+      <input type="password" id="passwordInput" placeholder="Enter password" style="padding: 0.75rem; margin: 1rem 0; width: 250px; display: block; border: 2px solid #ddd; border-radius: 5px; font-size: 1rem; outline: none; transition: border-color 0.3s;">
+      <button id="submitPassword" style="padding: 0.75rem 2rem; background: #007bff; color: white; border: none; border-radius: 5px; cursor: pointer; font-size: 1rem; font-weight: 600; transition: background 0.3s;">Submit</button>
+      <p id="passwordError" style="color: red; margin-top: 1rem; display: none; font-weight: 500;">Incorrect password. Please try again.</p>
+    </div>
+  </div>
+
+  <div id="mainContent" style="display: none;">
+    <!-- --------------- Timer & Table --------------- -->  
+    <div class="timer-display">
+      <h3>Timer: <span id="currentTimer">0.00</span> s</h3>
+      <p>Press <strong>Space</strong> to Start/Stop the timer</p>
+    </div>
+
+    <div class="timer-section">
+      <h3>Recorded Times</h3>
+      <table id="timestampTable">
+        <thead>
+          <tr>
+            <th>#</th>
+            <th>Time (seconds)</th>
+            <th>Recorded At</th>
+            <th>Action</th>
+          </tr>
+        </thead>
+        <tbody></tbody>
+      </table>
+    </div>
+
+    <!-- --------------- VIDEO GALLERY --------------- -->
+    <section id="video-gallery">
+      <h2 class="section-title">Featured Videos</h2>
+      <div style="display: flex; justify-content: center; flex-direction: column;">
+        <button id="prevVideo" class="video-btn"><i class="bi bi-chevron-left"></i></button>
+        <button id="nextVideo" class="video-btn"><i class="bi bi-chevron-right"></i></button>
+        <div style="position:relative;padding-top:56.25%;align-items: center;">
+          <iframe id="videoFrame" src="https://iframe.mediadelivery.net/embed/547925/9e7fd0f9-ef68-4a71-9f76-e8f81b01fed1?autoplay=true&loop=true&muted=true&preload=false&responsive=true" loading="lazy" style="align-items:center;position:absolute;top:0;height:50%;width:50%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>
+        </div>
+      </div>
+    </section>
+
+    <div>
+      <canvas id="durationChart" width="400" height="200"></canvas>
+    </div>
+  </div>
+
+  <script src="main.js"></script>
+</body>
+</html>
