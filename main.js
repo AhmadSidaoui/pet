@@ -45,9 +45,19 @@ const prevBtn = document.getElementById("prevVideo");
 const nextBtn = document.getElementById("nextVideo");
 
 // List of video embed URLs - replace with your actual video IDs
+// const videos = [
+//   "https://iframe.mediadelivery.net/embed/547925/9e7fd0f9-ef68-4a71-9f76-e8f81b01fed1?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+//   "https://iframe.mediadelivery.net/embed/547925/569005f8-1f34-4898-9f6d-e26a5dabbb3b?autoplay=true&loop=true&muted=true&preload=false&responsive=true"
+// ];
+
 const videos = [
-  "https://iframe.mediadelivery.net/embed/547925/9e7fd0f9-ef68-4a71-9f76-e8f81b01fed1?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/547925/569005f8-1f34-4898-9f6d-e26a5dabbb3b?autoplay=true&loop=true&muted=true&preload=false&responsive=true"
+  "https://iframe.mediadelivery.net/embed/548916/c7e4319c-f637-4cb3-aa83-799cc05221ad?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+  "https://iframe.mediadelivery.net/embed/548916/f10e5925-166f-46e4-a20b-db54dc8f6f3e?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+  "https://iframe.mediadelivery.net/embed/548916/b80a221a-44a8-45b6-bc51-8c40c5902f59?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+  "https://iframe.mediadelivery.net/embed/548916/d643e3fc-4b7d-44a2-867c-7c5cc1d89ead?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+  "https://iframe.mediadelivery.net/embed/548916/3eaa3f39-7cb3-4178-90d7-2557a50ee896?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+  "https://iframe.mediadelivery.net/embed/548916/c82e926e-57b8-439a-a761-f5d9caa5273d?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+  "https://iframe.mediadelivery.net/embed/548916/8c0bfb61-5524-429e-afe8-6834e03dc2cc?autoplay=true&loop=true&muted=true&preload=false&responsive=true"
 ];
 
 let currentVideo = 0;
