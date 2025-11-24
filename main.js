@@ -57,7 +57,11 @@ const videos = [
   "https://iframe.mediadelivery.net/embed/548916/d643e3fc-4b7d-44a2-867c-7c5cc1d89ead?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
   "https://iframe.mediadelivery.net/embed/548916/3eaa3f39-7cb3-4178-90d7-2557a50ee896?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
   "https://iframe.mediadelivery.net/embed/548916/c82e926e-57b8-439a-a761-f5d9caa5273d?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/8c0bfb61-5524-429e-afe8-6834e03dc2cc?autoplay=true&loop=true&muted=true&preload=false&responsive=true"
+  "https://iframe.mediadelivery.net/embed/548916/8c0bfb61-5524-429e-afe8-6834e03dc2cc?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+  "https://iframe.mediadelivery.net/embed/548916/0215ba20-b186-4bb7-b26b-920becf30e5a?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+  "https://iframe.mediadelivery.net/embed/548916/690277fe-34ca-48a3-914b-095e0ef3e2d7?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+  "https://iframe.mediadelivery.net/embed/548916/690277fe-34ca-48a3-914b-095e0ef3e2d7?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
+  "https://iframe.mediadelivery.net/embed/548916/0215ba20-b186-4bb7-b26b-920becf30e5a?autoplay=true&loop=true&muted=true&preload=false&responsive=true"
 ];
 
 let currentVideo = 0;
