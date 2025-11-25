@@ -40,8 +40,11 @@ function checkPassword() {
 // ------------------------------------------------------------------- //
 // ------------------------------------------------------------------- //
 // ---------- VIDEO SWITCHER ----------
-const videoFrame = document.getElementById("videoFrame");
+const frames = document.querySelectorAll(".videoFrame")
+// const videoFrame = document.querySelector(".videoFrame");
 const prevBtn = document.getElementById("prevVideo");
+const prevBtn2 = document.getElementById("prevVideo2");
+const nextBtn2 = document.getElementById("nextVideo2");
 const nextBtn = document.getElementById("nextVideo");
 
 // List of video embed URLs - replace with your actual video IDs
@@ -81,35 +84,46 @@ async function loadVideosFromBunny() {
 let currentVideo = 0;
 
 // Load video by changing iframe src
-function loadVideo(index) {
-  videoFrame.src = videos[index];
+function loadVideo(index, frame) {
+  frame.src = videos[index];
   currentVideo = index;
 }
 
 // Initialize first video
 if (videos.length > 0) {
-  loadVideo(0);
+  loadVideo(0, frames[0]);
+  loadVideo(0, frames[1]);
 }
 
 // Next and previous button click function
 prevBtn.addEventListener("click", () => {
   currentVideo = (currentVideo - 1 + videos.length) % videos.length;
-  loadVideo(currentVideo);
+  loadVideo(currentVideo,frames[0]);
 });
 
 nextBtn.addEventListener("click", () => {
   currentVideo = (currentVideo + 1) % videos.length;
-  loadVideo(currentVideo);
+  loadVideo(currentVideo, frames[0]);
 });
 
-// Optional: Keyboard navigation
-document.addEventListener("keydown", (e) => {
-  if (e.key === "ArrowLeft") {
-    prevBtn.click();
-  } else if (e.key === "ArrowRight") {
-    nextBtn.click();
-  }
+prevBtn2.addEventListener("click", () => {
+  currentVideo = (currentVideo - 1 + videos.length) % videos.length;
+  loadVideo(currentVideo, frames[1]);
 });
+
+nextBtn2.addEventListener("click", () => {
+  currentVideo = (currentVideo + 1) % videos.length;
+  loadVideo(currentVideo, frames[1]);
+});
+
+// // Optional: Keyboard navigation
+// document.addEventListener("keydown", (e) => {
+//   if (e.key === "ArrowLeft") {
+//     prevBtn.click();
+//   } else if (e.key === "ArrowRight") {
+//     nextBtn.click();
+//   }
+// });
 
 // ------------------------------------------------------------------- //
 // ------------------------------------------------------------------- //

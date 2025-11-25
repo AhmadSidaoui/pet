@@ -54,15 +54,28 @@
     </div>
 
     <!-- --------------- VIDEO GALLERY --------------- -->
-    <section id="video-gallery">
+    <section id="video-gallery" style="width:100%">
       <h2 class="section-title">Featured Videos</h2>
       <button id="prevVideo" class="video-btn"><i class="bi bi-chevron-left"></i></button>
       <button id="nextVideo" class="video-btn"><i class="bi bi-chevron-right"></i></button>
-      <div>
+      <div style="display:flex; flex-direction: row; width:100%">
+      <div  style="flex: 1;">
         <div style="position:relative;align-items: center;">
-          <iframe id="videoFrame" src="https://iframe.mediadelivery.net/embed/547925/9e7fd0f9-ef68-4a71-9f76-e8f81b01fed1?autoplay=true&loop=true&muted=true&preload=false&responsive=true" loading="lazy" style="align-items:center;position:relative;top:0;height:420px;width: 100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>
+          <iframe class="videoFrame" src="https://iframe.mediadelivery.net/embed/547925/9e7fd0f9-ef68-4a71-9f76-e8f81b01fed1?autoplay=true&loop=true&muted=true&preload=false&responsive=true" loading="lazy" style="align-items:center;position:relative;top:0;height:420px;width: 100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>
         </div>
       </div>
+
+      <div  style="flex: 1;">
+        <div style="position:relative;align-items: center;">
+          <iframe class="videoFrame" src="https://iframe.mediadelivery.net/embed/547925/9e7fd0f9-ef68-4a71-9f76-e8f81b01fed1?autoplay=true&loop=true&muted=true&preload=false&responsive=true" loading="lazy" style="align-items:center;position:relative;top:0;height:420px;width: 100%;" allow="accelerometer;gyroscope;autoplay;encrypted-media;picture-in-picture;" allowfullscreen="true"></iframe>
+        </div>
+      </div>
+      
+      </div>
+      <button id="prevVideo2" class="video-btn"><i class="bi bi-chevron-left"></i></button>
+      <button id="nextVideo2" class="video-btn"><i class="bi bi-chevron-right"></i></button>
+
+
     </section>
 
     <div>
