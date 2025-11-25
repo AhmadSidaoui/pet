@@ -74,7 +74,9 @@ async function loadVideosFromBunny() {
 }
 
 // Load videos from Bunny CDN on startup
-await loadVideosFromBunny();
+(async () => {
+  await loadVideosFromBunny();
+})();
 
 let currentVideo = 0;
 
