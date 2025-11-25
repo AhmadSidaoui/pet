@@ -85,7 +85,9 @@ function loadVideo(index) {
 }
 
 // Initialize first video
-loadVideo(0);
+if (videos.length > 0) {
+  loadVideo(0);
+}
 
 // Next and previous button click function
 prevBtn.addEventListener("click", () => {
