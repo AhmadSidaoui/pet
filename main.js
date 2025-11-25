@@ -50,19 +50,31 @@ const nextBtn = document.getElementById("nextVideo");
 //   "https://iframe.mediadelivery.net/embed/547925/569005f8-1f34-4898-9f6d-e26a5dabbb3b?autoplay=true&loop=true&muted=true&preload=false&responsive=true"
 // ];
 
-const videos = [
-  "https://iframe.mediadelivery.net/embed/548916/c7e4319c-f637-4cb3-aa83-799cc05221ad?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/f10e5925-166f-46e4-a20b-db54dc8f6f3e?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/b80a221a-44a8-45b6-bc51-8c40c5902f59?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/d643e3fc-4b7d-44a2-867c-7c5cc1d89ead?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/3eaa3f39-7cb3-4178-90d7-2557a50ee896?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/c82e926e-57b8-439a-a761-f5d9caa5273d?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/8c0bfb61-5524-429e-afe8-6834e03dc2cc?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/0215ba20-b186-4bb7-b26b-920becf30e5a?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/690277fe-34ca-48a3-914b-095e0ef3e2d7?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/690277fe-34ca-48a3-914b-095e0ef3e2d7?autoplay=true&loop=true&muted=true&preload=false&responsive=true",
-  "https://iframe.mediadelivery.net/embed/548916/0215ba20-b186-4bb7-b26b-920becf30e5a?autoplay=true&loop=true&muted=true&preload=false&responsive=true"
-];
+
+let videos = [];
+const LIBRARY_ID = "548916";
+const ACCESS_KEY = "15bc114d-2d31-4f33-898b567a6dd8-62ad-4ef3";
+
+async function loadVideosFromBunny() {
+  const response = await fetch(
+    `https://video.bunnycdn.com/library/${LIBRARY_ID}/videos`,
+    {
+      headers: { "AccessKey": ACCESS_KEY }
+    }
+  );
+
+  const data = await response.json();
+
+  const bunnyVideoUrls = data.items.map(v =>
+    `https://iframe.mediadelivery.net/embed/${LIBRARY_ID}/${v.guid}?autoplay=true&loop=true&muted=true&preload=false&responsive=true`
+  );
+
+  // 🔥 Add Bunny videos to the existing list (keep handlers)
+  videos.push(...bunnyVideoUrls);
+}
+
+// Load videos from Bunny CDN on startup
+loadVideosFromBunny();
 
 let currentVideo = 0;
 
