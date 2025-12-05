@@ -56,7 +56,7 @@ const nextBtn = document.getElementById("nextVideo");
 
 let videos = [];
 const LIBRARY_ID = "555468";//"548916";
-const ACCESS_KEY = "15bc114d-2d31-4f33-898b567a6dd8-62ad-4ef3";
+const ACCESS_KEY = "7308053d-7819-4f32-aba6dffb9a38-a0ad-4574";
 
 async function loadVideosFromBunny() {
   const response = await fetch(
