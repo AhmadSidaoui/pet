@@ -55,8 +55,12 @@ const nextBtn = document.getElementById("nextVideo");
 
 
 let videos = [];
+let videos_2 = [];
 const LIBRARY_ID = "548916"; //"555468";
 const ACCESS_KEY = "15bc114d-2d31-4f33-898b567a6dd8-62ad-4ef3";//"7308053d-7819-4f32-aba6dffb9a38-a0ad-4574";
+
+const LIBRARY_ID_2 = "555468";
+const ACCESS_KEY_2 = "7308053d-7819-4f32-aba6dffb9a38-a0ad-4574";
 
 async function loadVideosFromBunny() {
   const response = await fetch(
@@ -65,6 +69,7 @@ async function loadVideosFromBunny() {
       headers: { "AccessKey": ACCESS_KEY }
     }
   );
+  
 
   const data = await response.json();
 
@@ -76,44 +81,66 @@ async function loadVideosFromBunny() {
   videos.push(...bunnyVideoUrls);
 }
 
+
+
+async function loadVideosFromBunny_2() {
+  const response_2 = await fetch(
+    `https://video.bunnycdn.com/library/${LIBRARY_ID_2}/videos`,
+    {
+      headers: { "AccessKey": ACCESS_KEY_2 }
+    }
+  );
+  const data_2 = await response_2.json();
+  const bunnyVideoUrls_2 = data_2.items.map(v =>
+    `https://iframe.mediadelivery.net/embed/${LIBRARY_ID}/${v.guid}?autoplay=true&loop=true&muted=true&preload=false&responsive=true`
+  );
+  videos_2.push(...bunnyVideoUrls_2);
+}
+
+
+
+
 // Load videos from Bunny CDN on startup
 (async () => {
   await loadVideosFromBunny();
+  await loadVideosFromBunny_2();
 })();
 
 let currentVideo = 0;
 
 // Load video by changing iframe src
-function loadVideo(index, frame) {
-  frame.src = videos[index];
+function loadVideo(index, frame, vid) {
+  frame.src = vid[index];
   currentVideo = index;
 }
 
 // Initialize first video
 if (videos.length > 0) {
-  loadVideo(0, frames[0]);
-  loadVideo(0, frames[1]);
+  loadVideo(0, frames[0], videos);
+}
+if (videos_2.length > 0) {
+  loadVideo(0, frames[1], videos_2);
 }
 
 // Next and previous button click function
 prevBtn.addEventListener("click", () => {
   currentVideo = (currentVideo - 1 + videos.length) % videos.length;
-  loadVideo(currentVideo,frames[0]);
+  loadVideo(currentVideo,frames[0], videos);
 });
 
 nextBtn.addEventListener("click", () => {
   currentVideo = (currentVideo + 1) % videos.length;
-  loadVideo(currentVideo, frames[0]);
+  loadVideo(currentVideo, frames[0], videos);
 });
 
 prevBtn2.addEventListener("click", () => {
-  currentVideo = (currentVideo - 1 + videos.length) % videos.length;
-  loadVideo(currentVideo, frames[1]);
+  currentVideo = (currentVideo - 1 + videos_2.length) % videos_2.length;
+  loadVideo(currentVideo, frames[1], videos_2);
 });
 
 nextBtn2.addEventListener("click", () => {
-  currentVideo = (currentVideo + 1) % videos.length;
-  loadVideo(currentVideo, frames[1]);
+  currentVideo = (currentVideo + 1) % videos_2.length;
+  loadVideo(currentVideo, frames[1], videos_2);
 });
 
 // // Optional: Keyboard navigation
