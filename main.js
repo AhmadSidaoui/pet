@@ -92,7 +92,7 @@ async function loadVideosFromBunny_2() {
   );
   const data_2 = await response_2.json();
   const bunnyVideoUrls_2 = data_2.items.map(v =>
-    `https://iframe.mediadelivery.net/embed/${LIBRARY_ID}/${v.guid}?autoplay=true&loop=true&muted=true&preload=false&responsive=true`
+    `https://iframe.mediadelivery.net/embed/${LIBRARY_ID_2}/${v.guid}?autoplay=true&loop=true&muted=true&preload=false&responsive=true`
   );
   videos_2.push(...bunnyVideoUrls_2);
 }
