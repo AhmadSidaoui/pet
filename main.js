@@ -103,17 +103,17 @@ async function loadVideosFromBunny_2() {
   const data = await response.json();
 
   // 🔥 FILTER BY COLLECTION HERE
-  const filteredVideos = data.items.filter(video =>
+  const filteredVideos_2 = data.items.filter(video =>
     video.collectionId === TARGET_COLLECTION_ID_2
   );
 
-  const bunnyVideoUrls = filteredVideos.map(video =>
+  const bunnyVideoUrls = filteredVideos_2.map(video =>
     `https://iframe.mediadelivery.net/embed/${LIBRARY_ID}/${video.guid}?autoplay=true&loop=true&muted=true&preload=false&responsive=true`
   );
 
   // reset + push
-  videos.length = 0;
-  videos.push(...bunnyVideoUrls);
+  videos_2.length = 0;
+  videos_2.push(...bunnyVideoUrls);
 }
 
 
@@ -344,3 +344,4 @@ function renderChart(timestamps) {
     plugins: [Chart.registry.getPlugin('annotation')]
   });
 }
+
