@@ -92,7 +92,7 @@ async function loadVideosFromBunny() {
 const TARGET_COLLECTION_ID_2 = "d1bb4e35-8a22-454f-9178-485da9fb67d6";
 
 
-async function loadVideosFromBunny() {
+async function loadVideosFromBunny_2() {
   const response = await fetch(
     `https://video.bunnycdn.com/library/${LIBRARY_ID}/videos`,
     {
