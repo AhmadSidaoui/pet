@@ -46,6 +46,12 @@ const prevBtn = document.getElementById("prevVideo");
 const prevBtn2 = document.getElementById("prevVideo2");
 const nextBtn2 = document.getElementById("nextVideo2");
 const nextBtn = document.getElementById("nextVideo");
+const nextBtn3 = document.getElementById("nextVideo3");
+const prevBtn3 = document.getElementById("prevVideo3");
+const nextBtn4 = document.getElementById("nextVideo4");
+const prevBtn4 = document.getElementById("prevVideo4");
+
+
 
 // List of video embed URLs - replace with your actual video IDs
 // const videos = [
@@ -56,6 +62,8 @@ const nextBtn = document.getElementById("nextVideo");
 
 let videos = [];
 let videos_2 = [];
+let videos_3 = [];
+let videos_4 = [];
 const LIBRARY_ID = "548916"; //"555468";
 const ACCESS_KEY = "15bc114d-2d31-4f33-898b567a6dd8-62ad-4ef3";//"7308053d-7819-4f32-aba6dffb9a38-a0ad-4574";
 
@@ -100,10 +108,10 @@ async function loadVideosFromBunny_2() {
     }
   );
 
-  const data = await response.json();
+  const data_2 = await response.json();
 
   // 🔥 FILTER BY COLLECTION HERE
-  const filteredVideos_2 = data.items.filter(video =>
+  const filteredVideos_2 = data_2.items.filter(video =>
     video.collectionId === TARGET_COLLECTION_ID_2
   );
 
@@ -116,6 +124,60 @@ async function loadVideosFromBunny_2() {
   videos_2.push(...bunnyVideoUrls);
 }
 
+const TARGET_COLLECTION_ID_3 = "ee980504-e482-467a-ab93-ea6ec8b13268";
+
+
+async function loadVideosFromBunny_3() {
+  const response = await fetch(
+    `https://video.bunnycdn.com/library/${LIBRARY_ID}/videos`,
+    {
+      headers: { "AccessKey": ACCESS_KEY }
+    }
+  );
+
+  const data_3 = await response.json();
+
+  // 🔥 FILTER BY COLLECTION HERE
+  const filteredVideos_3 = data_3.items.filter(video =>
+    video.collectionId === TARGET_COLLECTION_ID_3
+  );
+
+  const bunnyVideoUrls = filteredVideos_3.map(video =>
+    `https://iframe.mediadelivery.net/embed/${LIBRARY_ID}/${video.guid}?autoplay=true&loop=true&muted=true&preload=false&responsive=true`
+  );
+
+  // reset + push
+  videos_3.length = 0;
+  videos_3.push(...bunnyVideoUrls);
+}
+
+const TARGET_COLLECTION_ID_4 = "b302e936-6f5c-412b-af7d-79d764cfe165";
+
+
+async function loadVideosFromBunny_4() {
+  const response = await fetch(
+    `https://video.bunnycdn.com/library/${LIBRARY_ID}/videos`,
+    {
+      headers: { "AccessKey": ACCESS_KEY }
+    }
+  );
+
+  const data_4 = await response.json();
+
+  // 🔥 FILTER BY COLLECTION HERE
+  const filteredVideos_4 = data_4.items.filter(video =>
+    video.collectionId === TARGET_COLLECTION_ID_4
+  );
+
+  const bunnyVideoUrls = filteredVideos_4.map(video =>
+    `https://iframe.mediadelivery.net/embed/${LIBRARY_ID}/${video.guid}?autoplay=true&loop=true&muted=true&preload=false&responsive=true`
+  );
+
+  // reset + push
+  videos_4.length = 0;
+  videos_4.push(...bunnyVideoUrls);
+}
+
 
 
 
@@ -123,6 +185,8 @@ async function loadVideosFromBunny_2() {
 (async () => {
   await loadVideosFromBunny();
   await loadVideosFromBunny_2();
+  await loadVideosFromBunny_3();
+  await loadVideosFromBunny_4();
 })();
 
 let currentVideo = 0;
@@ -140,6 +204,13 @@ if (videos.length > 0) {
 if (videos_2.length > 0) {
   loadVideo(0, frames[1], videos_2);
 }
+if (videos_3.length > 0) {
+  loadVideo(0, frames[1], videos_2);
+}
+if (videos_4.length > 0) {
+  loadVideo(0, frames[4], videos_4);
+}
+
 
 // Next and previous button click function
 prevBtn.addEventListener("click", () => {
@@ -160,6 +231,27 @@ prevBtn2.addEventListener("click", () => {
 nextBtn2.addEventListener("click", () => {
   currentVideo = (currentVideo + 1) % videos_2.length;
   loadVideo(currentVideo, frames[1], videos_2);
+});
+
+
+nextBtn3.addEventListener("click", () => {
+  currentVideo = (currentVideo + 1) % videos_3.length;
+  loadVideo(currentVideo, frames[2], videos_3);
+});
+
+prevBtn3.addEventListener("click", () => {
+  currentVideo = (currentVideo - 1 + videos_3.length) % videos_3.length;
+  loadVideo(currentVideo, frames[2], videos_3);
+});
+
+nextBtn4.addEventListener("click", () => {
+  currentVideo = (currentVideo + 1) % videos_4.length;
+  loadVideo(currentVideo, frames[3], videos_4);
+});
+
+prevBtn4.addEventListener("click", () => {
+  currentVideo = (currentVideo - 1 + videos_4.length) % videos_4.length;
+  loadVideo(currentVideo, frames[3], videos_4);
 });
 
 // // Optional: Keyboard navigation
